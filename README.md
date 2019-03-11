@@ -11,3 +11,7 @@ Works great with your stack web apps:
 ```
 $ trigger $(stack exec -- which YourApp)
 ```
+
+## Installation
+
+Install via `stack install`
