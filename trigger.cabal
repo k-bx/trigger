@@ -1,0 +1,36 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: fdec4d513d8ffb62875d71e19d0572cdb54268043f096fd9e91f20c91efebe97
+
+name:           trigger
+version:        0.1.0.0
+category:       Web
+homepage:       https://github.com/githubuser/trigger#readme
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2019 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+executable trigger
+  main-is: Main.hs
+  other-modules:
+      Paths_trigger
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wpartial-fields -Wredundant-constraints -threaded -rtsopts
+  build-depends:
+      async
+    , base >=4.7 && <5
+    , filepath
+    , fsnotify
+    , process
+    , unix
+  default-language: Haskell2010

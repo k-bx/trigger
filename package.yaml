@@ -1,0 +1,36 @@
+name:                trigger
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/trigger#readme
+license:             BSD3
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2019 Author name here
+category:            Web
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - async
+  - process
+  - fsnotify
+  - unix
+  - filepath
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wpartial-fields
+  - -Wredundant-constraints
+  - -threaded
+  - -rtsopts
+
+executables:
+  trigger:
+    source-dirs:      src
+    main:             Main.hs
