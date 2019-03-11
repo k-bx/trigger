@@ -9,6 +9,7 @@ import Control.Monad (forM_, forever)
 import qualified System.Environment as SE
 import qualified System.FSNotify as FSNotify
 import qualified System.FilePath as FilePath
+import System.IO
 import qualified System.Posix.Signals as Signals
 import qualified System.Posix.Types as PosixTypes
 import qualified System.Process as Proc
@@ -18,6 +19,8 @@ data Signal =
 
 main :: IO ()
 main = do
+  hSetBuffering stdout LineBuffering
+  hSetBuffering stderr LineBuffering
   args <- SE.getArgs
   case args of
     [] -> putStrLn "> Please put your command as an argument"
