@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fdec4d513d8ffb62875d71e19d0572cdb54268043f096fd9e91f20c91efebe97
+-- hash: 9be38f93d93a9e2d503bed8450a8e06c4bb484c8080b4feaf046ba40b06d3d6a
 
 name:           trigger
 version:        0.1.0.0
-category:       Web
+category:       CommandLine
 homepage:       https://github.com/githubuser/trigger#readme
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2019 Author name here
-license:        BSD3
+author:         Kostiantyn Rybnikov
+maintainer:     Kostiantyn Rybnikov <k-bx@k-bx.com>
+copyright:      2019 Kostiantyn Rybnikov
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
