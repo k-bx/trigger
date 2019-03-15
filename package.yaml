@@ -18,6 +18,8 @@ dependencies:
   - fsnotify
   - unix
   - filepath
+  - directory
+  - safe-exceptions
 
 ghc-options:
   - -Wall

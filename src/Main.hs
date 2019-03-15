@@ -5,7 +5,9 @@ import qualified Control.Concurrent.Async as Async
 import qualified Control.Concurrent.Chan as Chan
 import qualified Control.Concurrent.MVar as MVar
 import qualified Control.Exception as Exc
+import qualified Control.Exception.Safe as ExcSafe
 import Control.Monad (forM_, forever)
+import System.Directory (canonicalizePath)
 import qualified System.Environment as SE
 import qualified System.FSNotify as FSNotify
 import qualified System.FilePath as FilePath
@@ -38,9 +40,14 @@ main = do
 delay :: Int
 delay = 1000000
 
+logAndRestart :: IO () -> IO ()
+logAndRestart f =
+  (f `ExcSafe.catchAny` \e -> putStrLn $ "Got exception: " <> show e)
+  -- (f `Exc.catch` \e -> putStrLn $ "Got exception: " <> show (e::Exc.SomeException))
+
 launcher ::
      Chan.Chan Signal -> MVar.MVar [Proc.Pid] -> FilePath -> [String] -> IO ()
-launcher chan cleanupPids x xs = do
+launcher chan cleanupPids x xs = logAndRestart $ do
   pHandle <- Proc.spawnProcess x xs
   mPid <- Proc.getPid pHandle
   _ <- MVar.swapMVar cleanupPids (maybe [] (\y -> [y]) mPid)
@@ -61,7 +68,8 @@ cleanup pidsMvar = do
   forM_ pids $ \pid -> do Signals.signalProcess Signals.killProcess pid
 
 listener :: Chan.Chan Signal -> FilePath -> IO ()
-listener chan fp = do
+listener chan fp' = do
+  fp <- canonicalizePath fp'
   putStrLn $ "> Listener is listening to: " <> fp
   putStrLn $ "> Directory is: " <> FilePath.takeDirectory fp
   _ <-

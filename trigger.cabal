@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9be38f93d93a9e2d503bed8450a8e06c4bb484c8080b4feaf046ba40b06d3d6a
+-- hash: 2f7ec4a0242550e208cfc5395ddacfaf54885f49fe7d1356249e6dfea395a0bc
 
 name:           trigger
 version:        0.1.0.0
@@ -29,8 +29,10 @@ executable trigger
   build-depends:
       async
     , base >=4.7 && <5
+    , directory
     , filepath
     , fsnotify
     , process
+    , safe-exceptions
     , unix
   default-language: Haskell2010
